@@ -4,8 +4,14 @@
     <title>JavaScript Tutorial</title>
   </head>
   <body>
-    <h3>Problem 1</h3>
+    <h3>Part 1</h3>
     <div id='one'></div>
+
+    <h3>Part 2</h3>
+    <div id='two'></div>
+
+    <h3>Part 3</h3>
+    <div id='three'></div>
 
     <script type="text/javascript">
       //1
@@ -21,6 +27,26 @@
       var array = [1, 2, 3, 4, 5];
       console.log(square(array));
       document.getElementById('one').innerHTML = square(array);
+
+      //2
+      function turnIntoLI(item) {
+        var mapped = '<li>' + item + '</li>';
+        results.push(mapped);
+      }
+      var array = [1, 2, 3, 4, 5];
+      var results = array.map(turnIntoLI);
+      var output = results.join('');
+      document.getElementById('two').innerHTML = output;
+
+      //3
+      function renderArray(array) {
+        var results = array.map(turnIntoLI);
+        var output = results.join('');
+        document.getElementById('three').innerHTML = output;
+      }
+
+      var array = [1, 2, 3, 4, 5];
+      renderArray(array);
 
     </script>
   </body>
