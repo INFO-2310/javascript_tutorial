@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JavaScript Tutorial</title>
+  </head>
+  <body>
+    <h3>Problem 1</h3>
+    <div id='one'></div>
+
+    <script type="text/javascript">
+      //1
+      function square(numbers) {
+        var results = [];
+        for (var i = 0; i < numbers.length; i++) {
+          var item = array[i];
+          var mapped = item * item;
+          results.push(mapped);
+        }
+        return results;
+      }
+      var array = [1, 2, 3, 4, 5];
+      console.log(square(array));
+      document.getElementById('one').innerHTML = square(array);
+
+    </script>
+  </body>
+</html>
