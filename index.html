@@ -38,7 +38,15 @@
       var output = results.join('');
       document.getElementById('two').innerHTML = output;
 
-      
+      //3
+      function renderArray(array) {
+        var results = array.map(turnIntoLI);
+        var output = results.join('');
+        document.getElementById('three').innerHTML = output;
+      }
+
+      var array = [1, 2, 3, 4, 5];
+      renderArray(array);
 
     </script>
   </body>
