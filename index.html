@@ -13,8 +13,94 @@
     <h3>Part 3</h3>
     <div id='three'></div>
 
-    <script type="text/javascript">
+    <h3>Part 4</h3>
+    <div id='four'></div>
 
+    <h3>Part 5</h3>
+    <div id='five'></div>
+
+    <h3>Part 6</h3>
+    <div id='six'></div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://fb.me/react-0.11.2.min.js"></script>
+    <script type="text/javascript">
+      // 1
+      function square(numbers) {
+        var results = [];
+        for (var i = 0; i < numbers.length; i++) {
+          var item = array[i];
+          var mapped = item * item;
+          results.push(mapped);
+        }
+        return results;
+      }
+      var array = [1, 2, 3, 4, 5];
+      console.log(square(array));
+      document.getElementById('one').innerHTML = square(array);
+
+      // 2
+      function turnIntoLI(item) {
+        var mapped = '<li>' + item + '</li>';
+        return mapped;
+      }
+      var array = [1, 2, 3, 4, 5];
+      var results = array.map(turnIntoLI);
+      var output = results.join('');
+      document.getElementById('two').innerHTML = output;
+
+      // 3
+      function renderArray(array) {
+        var results = array.map(turnIntoLI);
+        var output = results.join('');
+        document.getElementById('three').innerHTML = output;
+      }
+
+      var array = [1, 2, 3, 4, 5];
+      renderArray(array);
+
+      // 4
+      function renderFour(array) {
+        var output = array.map(turnIntoLI).join('');
+        document.getElementById('four').innerHTML = output;
+      }
+      // $(document).on('click', 'body', function() {
+      //   array.push(Math.ceil(Math.random() * 100));
+      //   renderFour(array);
+      // });
+
+      // 5
+      var numbersList = React.createClass({
+        getInitialState: function() {
+          return { array: [1, 2, 3, 4, 5] };
+        },
+        render: function() {
+          var items = this.state.array.map(function(item) {
+            return React.DOM.li({ children: item });
+          });
+          return React.DOM.ul({ children: items });
+        }
+      });
+      React.renderComponent(numbersList(), document.getElementById('five'));
+
+      // 6
+      var ChangingList = React.createClass({
+        getInitialState: function() {
+          return { array: [1, 2, 3, 4, 5] };
+        },
+        addNum: function() {
+          var r = this.state.array;
+          r.push(Math.ceil(Math.random() * 100));
+          this.setState({ array: r });
+        },
+        render: function() {
+          var items = this.state.array.map(function(item) {
+            return React.DOM.li({ children: item });
+          });
+          return React.DOM.ul({ onClick: this.addNum, children: items });
+        }
+      });
+      React.renderComponent(ChangingList(), document.getElementById('six'));
     </script>
   </body>
 </html>
