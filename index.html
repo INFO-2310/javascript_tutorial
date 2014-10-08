@@ -22,6 +22,9 @@
     <h3>Part 6</h3>
     <div id='six'></div>
 
+    <h3>Part 7</h3>
+    <div id='seven'></div>
+
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://fb.me/react-0.11.2.min.js"></script>
     <script type="text/javascript">
@@ -101,6 +104,21 @@
         }
       });
       React.renderComponent(ChangingList(), document.getElementById('six'));
+
+      // 7
+      var PrefixList = React.createClass({
+        getInitialState: function() {
+          return { array: [1, 2, 3, 4, 5] };
+        },
+        render: function() {
+          var prefix = this.props.prefix;
+          var items = this.state.array.map(function(item) {
+            return React.DOM.li({ children: prefix + item });
+          });
+          return React.DOM.ul({ children: items });
+        }
+      });
+      React.renderComponent(PrefixList({ prefix: 'Hi ' }), document.getElementById('seven'));
     </script>
   </body>
 </html>
